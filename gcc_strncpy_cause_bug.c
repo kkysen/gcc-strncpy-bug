@@ -6,7 +6,7 @@
 #include <string.h>
 #include <stdio.h>
 
-int main(const int argc, const char *const *const argv) {
+int main() {
     char s1[] = "H";
     // char s2[5]; // static allocation causes bug, too
     char *s2 = (char *) malloc(5 * sizeof(char));
