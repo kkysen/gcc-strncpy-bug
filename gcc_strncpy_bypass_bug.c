@@ -25,7 +25,7 @@ int main(const int argc, const char *const *const argv) {
     }
     printf("\n\n");
     
-    char s1[] = "Hello, World";
+    char s1[] = "H";
 //    char s2[5];
     char *s2 = (char *) malloc(len * sizeof(char));
     strncpy(s2, s1, 6);

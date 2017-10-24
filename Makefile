@@ -1,13 +1,24 @@
 CC = gcc -ggdb -std=c99 -Wall -Werror -O3
-OUT = builtin_strncpy_test
+NO_BUG = gcc_strncpy_bypass_bug
+HAS_BUG = gcc_strncpy_cause_bug
 
-all:
-	$(CC) -o $(OUT) builtin_strncpy_test.c
+no_bug:
+	$(CC) -o $(NO_BUG) gcc_strncpy_bypass_bug.c
+
+has_bug:
+	$(CC) -o $(HAS_BUG) gcc_strncpy_cause_bug.c
 
 clean:
 	rm -f *.o
-	rm -f $(OUT)
+	rm -f $(NO_BUG)
+	rm -f $(HAS_BUG)
 
-run: all
-	./$(OUT) 3
-	./$(OUT) 10
+run: no_bug
+	./$(NO_BUG) 3
+	./$(NO_BUG) 10
+
+	echo "The following will cause the bug:"
+
+	make has_bug
+	./$(HAS_BUG)
+
